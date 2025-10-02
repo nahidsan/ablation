@@ -2,10 +2,16 @@ import pandas as pd;
 import numpy as np;
 import torch
 
-from transformers import AdamW, get_scheduler
+import torch.optim
+
+
+
+#from transformers import AdamW, get_scheduler
 
 #adding due to error and to get AdamW
-#from transformers import get_scheduler
+
+from transformers import get_scheduler
+
 #from transformers.optimization import AdamW
 
 from collections import defaultdict
@@ -84,8 +90,9 @@ def run():
             "weight_decay": 0.0,
         },
     ]
+
     
-    optimizer = AdamW(
+    optimizer = torch.optim.AdamW(
         params = optimizer_parameters,
         lr = args.learning_rate,
         weight_decay = args.weight_decay,
